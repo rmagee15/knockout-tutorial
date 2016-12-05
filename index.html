@@ -1,0 +1,48 @@
+<DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <title>Knockout.js Tutorial</title>
+
+   <!-- Load Stylesheet -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+   <div>
+      <h1>Wishlist Organizer</h1>
+      <div>
+         <p>This wishlist is for <span data-bind="text: description"></span></p>
+
+         <!-- <p>Name: <span data-bind="text: name"></span></p> -->
+         <p>Name: <input data-bind="value: name"/></p>
+
+         <!-- <p>Event: <span data-bind="text: event"></span></p> -->
+         <p>Event: <input data-bind="value: event"/></p>
+      </div>
+
+      <h2>Wishlist</h2>
+      <table>
+         <thead><tr>
+            <th>Item</th><th>Link</th><th>Type</th><th>Price</th><th>On Sale?</th>
+         </tr></thead>
+         <tbody data-bind="foreach: items">
+            <tr>
+               <td><input data-bind="value: item" /></td>
+               <td><input data-bind="value: link" /></td>
+               <td><select data-bind="options: $root.itemTypes, value: type, optionsText: 'typeName'"></select></td>
+               <td><input data-bind="value: price" /></td>
+               <td><input  type="checkbox" data-bind="checked: onSale" /><input data-bind="value: salePrice, visible: onSale" /></td>
+            </tr>
+         </tbody>
+      </table>
+      <button data-bind="click: addItem">Add Item</button>
+   </div>
+   
+   <!-- Load Knockout CDN and Javascript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+   <script src='js/app.js'></script>
+</body>
+</html>
